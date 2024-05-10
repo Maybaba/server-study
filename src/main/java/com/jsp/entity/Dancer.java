@@ -118,5 +118,4 @@ public class Dancer {
                 ", genres=" + genres +
                 '}';
     }
-
 }
