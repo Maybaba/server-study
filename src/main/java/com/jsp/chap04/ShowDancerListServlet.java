@@ -27,11 +27,10 @@ public class ShowDancerListServlet extends HttpServlet {
 
         // 데이터베이스에 접근하여 댄서 목록을 가져옴
         List<Dancer> dancerList = repo.retrieve();
-//        System.out.println("가져와! = " + dancerList);
+//        System.out.println("가져와 = " + dancerList);
 
         // jsp파일에게 보낼 데이터 수송객체에 담기
         req.setAttribute("dancers", dancerList);
-
 
         // JSP 파일 열기
         RequestDispatcher rd

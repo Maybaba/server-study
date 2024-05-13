@@ -45,6 +45,7 @@ public class Dancer {
         }
     }
 
+    private int id; // 댄서 식별값
     private String name; // 댄서 이름
 
     private String crewName; // 댄서 팀 이름
@@ -62,6 +63,14 @@ public class Dancer {
         this.crewName = crewName;
         this.danceLevel = danceLevel;
         this.genres = genres;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

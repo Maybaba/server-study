@@ -32,7 +32,7 @@
 
     <!--  for (Dancer d : dancers)  -->
     <c:forEach var="d" items="${dancers}">
-        <li>
+        <li data-id="${d.id}">
             # 이름: <span class="dancer-name">${d.name}</span>,
             # 크루명: ${d.crewName},
             # 레벨: ${d.danceLevel},
@@ -46,6 +46,28 @@
 
 
 <a href="/chap04/dancer/form">다시 등록하기</a>
+
+<script>
+    //삭제 버튼 클릭 이벤트 - 버블링
+    const $ul = document.getElementById('dancer-list');
+
+    $ul.addEventListener('click', e => {
+        e.preventDefault();
+
+        if(!e.target.matches('button.del-btn')) return;
+
+
+        //console.log('삭제버튼 클릭');
+        if(!confirm(' 정말로 삭제하시겠습니까?')) return;
+
+        //id 정보 읽어오기
+        const id = e.target.closest('li').dataset.id;
+
+        //링크 요청 생성
+        window.location.href = '/chap04/remove?id=' + id; //서버에게 몇번 지울 지 알려줘야 함
+    });
+
+</script>
 
 </body>
 </html>

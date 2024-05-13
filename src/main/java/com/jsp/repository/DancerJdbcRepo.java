@@ -27,7 +27,7 @@ public class DancerJdbcRepo {
     private static DancerJdbcRepo repo = new DancerJdbcRepo();
 
     // 싱글톤 구현
-    private DancerJdbcRepo() {}
+    public DancerJdbcRepo() {}
 
     // 싱글객체를 리턴하는 메서드
     public static DancerJdbcRepo getInstance() {
@@ -35,7 +35,7 @@ public class DancerJdbcRepo {
     }
 
     private String username = "root"; // db계정명
-    private String password = "mariadb"; // db 패스워드
+    private String password = "1234"; // db 패스워드
     private String url = "jdbc:mariadb://localhost:3306/spring5"; // db url : 데이터베이스 설치 위치
     private String driverClassName = "org.mariadb.jdbc.Driver"; // db벤더별 전용 커넥터 클래스
 
@@ -98,6 +98,7 @@ public class DancerJdbcRepo {
                 String danceLevel = rs.getString("dance_level");
 
                 Dancer dancer = new Dancer();
+                dancer.setId(id);
                 dancer.setName(name);
                 dancer.setCrewName(crewName);
                 dancer.setDanceLevel(Dancer.DanceLevel.valueOf(danceLevel));
@@ -113,4 +114,22 @@ public class DancerJdbcRepo {
 
     }
 
+    public void delete(String id) {
+
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+
+            Class.forName(driverClassName);
+
+            String sql = "DELETE FROM tbl_dancer WHERE id = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+
+            pstmt.executeUpdate();
+
+
+        } catch (Exception e) {
+
+        }
+    }
 }

@@ -25,26 +25,26 @@ public class DancerFormRequestServlet extends HttpServlet {
                 = req.getRequestDispatcher("/WEB-INF/chap04/register.jsp");
         rd.forward(req, resp);
 
-        req.setCharacterEncoding("utf-8");
-
-        String name = req.getParameter("name");
-        String crewName = req.getParameter("crewName");
-        String danceLevel = req.getParameter("danceLevel");
-        String[] genres = req.getParameterValues("genres");
-
-        // 댄서 객체 생성
-        Dancer dancer = new Dancer();
-        dancer.setName(name);
-        dancer.setCrewName(crewName);
-        dancer.setDanceLevel(Dancer.DanceLevel.valueOf(danceLevel));
-
-        List<Dancer.Genre> genreList = new ArrayList<>();
-        for (String genre : genres) {
-            genreList.add(Dancer.Genre.valueOf(genre));
-        }
-        dancer.setGenres(genreList);
-
-        System.out.println("dancer = " + dancer);
+//        req.setCharacterEncoding("utf-8");
+//
+//        String name = req.getParameter("name");
+//        String crewName = req.getParameter("crewName");
+//        String danceLevel = req.getParameter("danceLevel");
+//        String[] genres = req.getParameterValues("genres");
+//
+//        // 댄서 객체 생성
+//        Dancer dancer = new Dancer();
+//        dancer.setName(name);
+//        dancer.setCrewName(crewName);
+//        dancer.setDanceLevel(Dancer.DanceLevel.valueOf(danceLevel));
+//
+//        List<Dancer.Genre> genreList = new ArrayList<>();
+//        for (String genre : genres) {
+//            genreList.add(Dancer.Genre.valueOf(genre));
+//        }
+//        dancer.setGenres(genreList);
+//
+//        System.out.println("dancer = " + dancer);
 
 
     }
