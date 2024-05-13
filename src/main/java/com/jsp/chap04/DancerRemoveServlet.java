@@ -2,6 +2,7 @@ package com.jsp.chap04;
 
 import com.jsp.entity.Dancer;
 import com.jsp.repository.DancerJdbcRepo;
+import com.jsp.repository.DancerRepository;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +16,18 @@ import java.util.List;
 @WebServlet("/chap04/remove")
 public class DancerRemoveServlet  extends HttpServlet {
 
-    private final DancerJdbcRepo repo = new DancerJdbcRepo().getInstance();
+//    private final DancerJdbcRepo repo = new DancerJdbcRepo().getInstance();
+
+    //DIP
+//    private DancerRepository repo = DancerJdbcRepo.getInstance();
+
+    //OCP
+    private DancerRepository repo;
+
+    public DancerRemoveServlet(DancerRepository repo) {
+        this.repo = repo;
+    }
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("삭제 요청 서버 들어옴!");

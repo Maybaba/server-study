@@ -4,6 +4,7 @@ import com.jsp.entity.Dancer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //역할 : 메모리 데이터 베이스에 댄서드릉ㄹ CRUD (저장,조회,수정,삭제)
 //Model
@@ -33,4 +34,16 @@ public class DancerMemoryRepo {
         return dancerList;
     }
 
+    //댄서 리스트를 지우는 기능
+    public void delete (int id) {
+        List<Dancer> dancers = dancerList.stream()
+                .filter(dancer -> dancer.getId() == id)
+                .collect(Collectors.toList());
+
+        if(!dancers.isEmpty()) {
+            dancerList.remove(dancers.get(0));
+        }
+    }
 }
+
+

@@ -22,7 +22,7 @@ CREATE TABLE tbl_dancer (
 
 // 역할: 실제 데이터베이스에 댄서들을 CRUD
 // Model
-public class DancerJdbcRepo {
+public class DancerJdbcRepo implements DancerRepository{ //db에서 연결해서 처리함
 
     private static DancerJdbcRepo repo = new DancerJdbcRepo();
 
